@@ -1,5 +1,6 @@
 package com.project.transactions.service.impl;
 
+import com.project.transactions.exception.TransactionNotFoundException;
 import com.project.transactions.model.Transaction;
 import com.project.transactions.repository.TransactionRepository;
 import com.project.transactions.service.TransactionService;
@@ -11,6 +12,7 @@ import java.util.List;
 public class TransactionServiceImpl implements TransactionService {
     private final TransactionRepository transactionRepository;
 
+    @Autowired
     public TransactionServiceImpl(TransactionRepository transactionRepository){
         this.transactionRepository = transactionRepository;
     }
@@ -22,7 +24,8 @@ public class TransactionServiceImpl implements TransactionService {
 
     @Override
     public Transaction getTransactionById(String id){
-        return transactionRepository.findById(id).orElse(null);
+        return transactionRepository.findById(id)
+                .orElseThrow(() -> new TransactionNotFoundException("Transaction with ID " + id + " not found."));
     }
 
     @Override

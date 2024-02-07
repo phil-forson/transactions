@@ -27,9 +27,6 @@ public class TransactionController {
     @GetMapping("/{id}")
     public ResponseEntity<Transaction> getTransactionById(@PathVariable String id){
         Transaction transaction = transactionService.getTransactionById(id);
-        if(transaction == null){
-            return ResponseEntity.notFound().build();
-        }
         return ResponseEntity.ok(transaction);
     }
 
@@ -41,9 +38,6 @@ public class TransactionController {
     @PutMapping("/{id}")
     public ResponseEntity<Transaction> updateTransaction(@PathVariable String id,@RequestBody Transaction transaction){
         Transaction updatedTransaction = transactionService.updateTransaction(id, transaction);
-        if(updatedTransaction == null){
-            return ResponseEntity.notFound().build();
-        }
         return ResponseEntity.ok(updatedTransaction);
     }
 

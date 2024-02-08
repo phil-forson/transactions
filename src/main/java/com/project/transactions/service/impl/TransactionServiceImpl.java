@@ -35,7 +35,7 @@ public class TransactionServiceImpl implements TransactionService {
 
     @Override
     public Transaction saveTransaction(Transaction transaction){
-//        validateTransaction(transaction);
+        validateTransaction(transaction);
         return transactionRepository.save(transaction);
     }
 

@@ -7,15 +7,15 @@ services:
     depends_on:
       - mongo
     environment:
-      SPRING_DATA_MONGODB_URI: mongodb+srv://forsonphilemon1:JesusisLord@cluster0.ljsvlep.mongodb.net/?retryWrites=true&w=majority
+      SPRING_DATA_MONGODB_URI: mongouri
 
   mongo:
     image: mongo:latest
     ports:
       - "27017:27017"
     environment:
-      MONGO_INITDB_ROOT_USERNAME: mongoadmin
-      MONGO_INITDB_ROOT_PASSWORD: secret
+      MONGO_INITDB_ROOT_USERNAME: username
+      MONGO_INITDB_ROOT_PASSWORD: password
     volumes:
       - mongo-data:/data/db
 

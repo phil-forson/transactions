@@ -3,10 +3,11 @@ package com.project.transactions.controller;
 import com.project.transactions.model.Transaction;
 import com.project.transactions.service.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/transactions")
@@ -20,8 +21,8 @@ public class TransactionController {
     }
 
     @GetMapping
-    public List<Transaction> getAllTransactions(){
-        return transactionService.getAllTransactions();
+    public Page<Transaction> getAllTransactions(Pageable pageable){
+        return transactionService.getAllTransactions(pageable);
     }
 
     @GetMapping("/{id}")

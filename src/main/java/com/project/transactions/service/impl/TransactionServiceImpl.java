@@ -6,12 +6,14 @@ import com.project.transactions.model.Transaction;
 import com.project.transactions.repository.TransactionRepository;
 import com.project.transactions.service.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import java.math.BigDecimal;
 import java.util.Date;
-import java.util.List;
+
 
 @Service
 public class TransactionServiceImpl implements TransactionService {
@@ -23,8 +25,8 @@ public class TransactionServiceImpl implements TransactionService {
     }
 
     @Override
-    public List<Transaction> getAllTransactions(){
-        return transactionRepository.findAll();
+    public Page<Transaction> getAllTransactions(Pageable pageable){
+        return transactionRepository.findAll(pageable);
     }
 
     @Override

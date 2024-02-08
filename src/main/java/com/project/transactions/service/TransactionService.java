@@ -1,11 +1,13 @@
 package com.project.transactions.service;
 
 import com.project.transactions.model.Transaction;
-import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 
 
 public interface TransactionService {
-    List<Transaction> getAllTransactions();
+    Page<Transaction> getAllTransactions(Pageable pageable);
     Transaction getTransactionById(String id);
     Transaction saveTransaction(Transaction transaction);
 

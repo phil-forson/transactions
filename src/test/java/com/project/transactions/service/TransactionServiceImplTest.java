@@ -55,7 +55,7 @@ class TransactionServiceImplTest {
                 () -> assertNotNull(result),
                 () -> assertEquals(1, result.getTotalElements()),
                 () -> assertEquals(1, result.getContent().size()),
-                () -> assertEquals(transaction.getId(), result.getContent().getFirst().getId()));
+                () -> assertEquals(transaction.getId(), result.getContent().get(0).getId()));
     }
 
     @Test
